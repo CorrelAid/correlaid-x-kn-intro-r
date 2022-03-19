@@ -110,11 +110,7 @@ my_number_list[1][3] # geht nicht
 my_number_list[[1]]
 my_number_list[[1]][3] # geht
 
-# Code Cat! ---------------------------------------------------------------
-
-##  /\_/\
-## ( o.o )
-##  > ^ <
+# ------------------------------------------------------------------------------
 
 # Erstelle eine Liste, die die folgenden Elemente enthält
 # Einen Integer-Vektor mit den Zahlen 0 bis 10
@@ -138,10 +134,6 @@ listy_list[XXX]
 # Für Experten: füge der Liste deine Vor- und Nachnamen an
 
 listy_list[XXX] <- c("Marie", "Johanna", "Dübel")
-
-##  /\_/\
-## ( o.o )
-##  > ^ <
 
 
 # The real shit - Funktionen ----------------------------------------------
