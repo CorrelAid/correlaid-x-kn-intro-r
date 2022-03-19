@@ -210,11 +210,8 @@ vanhanen <- function(vote_share, participation, population) {
 vanhanen(32.9, 0.76, 83.6)
 vanhanen(53.08, 0.51, 10.01)
 
-# Code Cat! ---------------------------------------------------------------
+# --------------------------------------------------------------------------
 
-##  /\_/\
-## ( o.o )
-##  > ^ <
 
 # Schreibe eine Funktion, die das letzte Element eines Vektors zurückgibt
 
