@@ -247,11 +247,10 @@ unterdurchschnittlich <- function(XXX) {
 }
 
 toy_vector2[toy_vector2 < mean(toy_vector2)]
-# Für schnelle PiRRRRRRaten (oder SchnuRRRRRRkatzen): Fangt mit den Hausaufgaben an ;)
 
-##  /\_/\
-## ( o.o )
-##  > ^ <
+
+# Für Experten: Fangt mit den Hausaufgaben an
+
 
 # Für morgen noch diese Zeile ausführen! Könnte etwas dauern, da ihr Packages installiert
 
