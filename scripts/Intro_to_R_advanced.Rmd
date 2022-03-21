@@ -1,7 +1,7 @@
 ---
 title: "Intro_to_R_advanced"
 author: "Philipp Bosch, Jens Wiederspohn, Niklas Bacher, Jonas Schrade"
-date: "19 3 2022"
+date: "05 05 2022"
 output: html_document
 ---
 
@@ -9,3 +9,17 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+Für den heutigen Workshop benutzen wir eine andere Art, um mit unseren Daten zu arbeiten: R-Markdown.
+Ein Markdown unterscheidet sich nicht großartig von einem R Skript, jedoch erlaubt es uns HTML und PDF Dokumente direkt aus dem R-Code zu erstellen. Außerdem ermöglicht es uns reproduzierbare Ergebnisse zu erzielen. 
+                                                    
+Spezielles Feature eines Markdowns sind code chunks: (Windows: STRG + Alt + I, Mac: Command + Opt + I)
+```{r}
+
+```
+
+Durch das sogenannte Knitten wandeln wir unseren Text und unsere Chunks in ein HTML File um.
+
+Jetzt aber wieder zurück zum Coden!
+
+
+# Functions
