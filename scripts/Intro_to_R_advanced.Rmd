@@ -23,3 +23,201 @@ Jetzt aber wieder zurück zum Coden!
 
 
 # Functions
+
+R bietet uns die Möglichkeit bestehende Funktionen zu nutzen, die Formeln hierfür kennt ihr vermutlich schon aus der ERM-Vorlesung.
+
+```{r}
+# Den Mean verschiedener Werte berechnen:
+mean(14, 23, 9, 18, 34, 2, 108)
+
+# Den Median der Werte bestimmen:
+median(14, 23, 9, 18, 34, 2, 108)
+
+# Die Werte addieren:
+sum(14, 23, 9, 18, 34, 2, 108)
+
+# Die Wurzel eines Wertes errechnen:
+sqrt(sum(14, 23, 9, 18, 34, 2, 108))
+```
+
+Funktionen könnt ihr selbstverständlich auch auf vorher definierte Vektoren anwenden.
+
+```{r}
+# Alle Funktionen könnt ihr selbstverständlich auch auf vorher definierte Vektoren anwenden:
+Height <- c(1.75, 1.83, 1.94, 1.65, 1.72, 1.84, 2, 1.52, 1.42, 1.78)
+Age <- c(16, 21, 19, 17, 24, 20, 18, 12, 9, 18)
+
+# Durschnittliche Körpergröße
+mean(Height)
+
+# Median des Alters
+median(Age)
+
+# Anzahl der Beobachtungen (also die Länge des Vektors)
+length(Height)
+
+# In diesem Zuge können wir auch gleich prüfen, ob unsere Vektoren gleichlang sind, also ob die Variable der Körpergröße gleichviel Beobachtungen hat, wie die Variable des Alters.
+length(Height)==length(Age)
+
+
+# Wir können uns nun auch die Varianz der Variablen Height und Age ausrechnen lassen:
+var(Height)
+var(Age)
+```
+
+Wenn, wie oben, zwei Variablen (Körpergröße und Alter) vorliegen, macht es häufig Sinn die Kovarianz bzw. die Korrelation zu errechnen.
+
+```{r}
+# Die Kovarianz von Alter und Körpergröße:
+cov(Height, Age)
+
+# Die Korrelation von Alter und Körpergröße:
+cor(Height, Age)
+
+# Wir beobachten also eine positive Korrelation zwischen dem Alter und der Körpergröße der Objekte von rund 0.7.
+
+```
+
+Mit der Sample-Funktion können wir Stichproben ziehen:
+
+```{r}
+# Zunächst definieren wir eine Population, diese besteht aus allen Werten zwischen 1 und 10 000.
+Population<-c(1:10000) 
+
+# Aus diese Population ziehen wir jetzt eine zufällige Stichprobe von der Größe 10:
+sample1 <- sample(Population, size=10)
+sample2 <- sample(Population, size=10)
+
+# Ihr seht, dass, trotz identischer Funktion, sample1 und sample2 völlig unterschiedlich sind. Das liegt daran, dass die sample-Funktion jedes Mal aufs Neue zufällige Stichproben zieht.
+
+# Erneut können wir selbstverständlich vorherige Funktionen nutzen, um Mean, Median, Varianz, Kovarianz, Korrelation, usw. der Samples zu berechnen:
+mean(sample1)
+median(sample2)
+var(sample1)
+cov(sample1, sample2)
+cor(sample1, sample2)
+
+# Wir könnten aus unseren bestehenden Samples sogar nochmal samplen. 
+sampled_sample <- sample(sample1, size = 2)
+```
+
+
+Ihr seht, dass es in R Funktionen für so ziemlich alles gibt. Und wenn es für irgendetwas keine Funktion geben sollte, dann gibt es selbst hierfür eine Funktion: Eine Funktion, um eigene Funktionen zu programmieren: Die function-Funktion.
+
+```{r}
+# Wir programmieren eine Funktion, die die gleiche Aufgabe übernimmt wie die sum-Funktion: Sie addiert die Werte a und b.
+addieren <- function (a,b){
+ 
+   a+b
+
+  }
+
+addieren(2,4)
+
+
+```
+
+Natürlich geht es auch ein wenig komplizierter: Vielleicht kennt ihr schon den Vanhanen-Index. Dieser wird für unterschiedliche Staaten errechnet, um ihren Grad der Demokratisierung festzustellen. Die Formel sieht folgendermaßen aus: ((letzte Wahlbeteiligung in % (P für Partizipation)) * (100 - Anteil der Stimmen für die erfolgreichste Partei in % (W für Wettbewerb)) / 100 = (P*W)/100
+
+Leider ist die Funktion für den Vanhanen-Index in R nicht vorinstalliert. Daher müssen wir selber ran:
+
+```{r}
+# P steht hierbei für die Wahlbeteiligung und L für das prozentuale Ergebnis der erfolgreichsten Partei (der "Largest Party"): 
+Vanhanen <- function(P,L){
+  (P*(100-L))/100
+}
+```
+
+Nun können wir die Funktion auf die verschiedensten Beispiele anwenden:
+
+```{r}
+Germany_Bundestag_2018 <- Vanhanen(76.6, 26)
+France_Presidential_2017 <- Vanhanen(77.8, 24)
+Russia_Parliament_2018 <- Vanhanen(51.7, 49.8)
+NorthKorea_Parliament_2019 <- Vanhanen(99.99, 100)
+
+```
+
+Übung: (Muss definitiv nochmal gegengecheckt/überarbeitet werden)
+
+Jetzt seid ihr gefragt: 
+
+Programmiert eine Funktion, die 5 Werte addiert:
+```{r}
+______ <- function(a,b,c,d,e,f){
+  
+  __________
+
+}
+
+
+# Test:
+_______(_,_,_,_,_)
+
+```
+
+Nutzt die vorherige Funktion, um eine neue Funktion zu programmieren, die den Durchschnitt der 5 Werte herausgibt
+```{r}
+____ <- function(a,b,c,d,e,f){
+ 
+   _______(_,_,_,_,_)/5
+
+}
+
+# Test:
+
+______(_,_,_,_,_)
+```
+
+
+Definierie nun einen Vektor mit 5 Werten deiner Wahl:
+```{r}
+vektor1 <- c(_,_,_,_,_)
+```
+
+Programmiere nun eine Funktion, die die Varianz des soeben definierten Vektors berrechnet:
+```{r}
+_______ <- function (a){
+  sum((_-mean(_))^2)/5
+  
+}
+# Test:
+_______(_______)
+```
+
+Definiere nun einen zweiten Vektor mit 5 Werten deiner Wahl:
+```{r}
+vektor2 <- c(_,_,_,_,_)
+```
+
+Programmiere nun eine Funktion, um die Kovarianz von Vektor1 und Vektor2 zu errechnen:
+```{r}
+_______ <-function(a,b){
+  sum((_-mean(_)*(_-mean(_))))/5
+}
+# Test:
+_________(______,_______)
+```
+Abschließend willst du aber auch die Korrelation deiner Vektoren wissen, programmiere auch hierfür eine Funktion:
+```{r}
+_________ <-function(a,b){
+  (________*5)/(sqrt((sum((_-mean(_))^2))/5)*sqrt((sum((_-mean(_))^2))/5))
+}
+
+________(______,______)
+```
+
+Bonus:
+Welche Kovarianz, bzw. Korrelation besteht zwischen folgenden Variablen?
+```{r}
+Methoden<-c(1.3, 2, 3.3, 1.7, 4.0)
+Statistik<- c(1.0, 3.3, 3.7, 1.3, 2.7)
+
+# Kovarianz:
+________(_______,______)
+
+# Korrelation:
+________(_______,______)
+
+```
+
