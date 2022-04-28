@@ -221,3 +221,59 @@ ________(_______,______)
 
 ```
 
+
+# Packages
+Der Kern von R wird auch base genannt und umfasst die wichtigstens Grundfunktionen — mit denen kommen wir auch schon relativ weit, wir können zum Beispiel problemlos diverse Statistiken berechnen und sogar Visualisierungen machen, aber wir wollen natürlich mehr, einfacher, schneller und besser. Dazu benutzen wir die sogenannten packages. Um diese erstmals zu installieren benutzen wir die install.packages() function.
+
+```{r}
+install.packages("palmerpenguins")
+```
+
+Packages müssen nur einmalig installiert werden, aber je nach Bedarf für jede Sitzung neu geladen werden. Dafür nutzen wir die library() function.
+
+```{r warning=FALSE}
+library(palmerpenguins)
+```
+
+# Den Datensatz untersuchen
+```{r}
+head(penguins)
+```
+
+```{r}
+str(penguins)
+```
+
+```{r}
+View(penguins)
+```
+
+# Lineare Regression
+Eine weit verbreitete Methode um Zusammenhänge in unseren Daten zu verstehen ist die lineare Regression. Dabei untersuchen wir den Einfluss von einer oder mehreren (unabhängigen) Variable(n) auf die zu untersuchende (abhängige Variable). Um eine einfache Regression zu rechnen benötigen wir kein zusätzliches Pckage. Der R Syntax sieht so aus: 
+
+```{r}
+lm(body_mass_g ~ flipper_length_mm, data = penguins)
+```
+
+Wie lassen sich unsere Ergebnisse interpretieren?
+
+Um noch mehr Informationen über unsere Regression zu erhalten, empfiehlt sich die summary() function. Kommt euch der Output bekannt vor?
+```{r}
+summary(lm(body_mass_g ~ flipper_length_mm, data = penguins))
+```
+
+Falls wir die Ergebnisse jedoch schön abspeichern wollen, sollten wir ein weiteres package verwenden. Das "broom" package:
+
+```{r}
+install.packages("broom")
+library(broom)
+```
+
+```{r}
+broom::tidy(lm(body_mass_g ~ flipper_length_mm, data = penguins))
+```
+
+Jetzt seid wieder ihr gefragt!
+
+
+
