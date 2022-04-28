@@ -12,6 +12,7 @@
 ##
 ## ---------------------------
 
+
 # Die simpelste Version von R - Ein Taschenrechner ------------------------
 
 3 + 6 - 2 # addieren & subtrahieren
@@ -29,6 +30,7 @@
 5 >= 3 # größer/gleich
 5 == 3 # gleich
 5 != 3 # ungleich
+
 
 # Mehr als Zahlen und einfache Abfragen -----------------------------------
 
@@ -51,7 +53,7 @@ TRUE # boolean
 
 wort <- 'rot'
 wort # aufrufen des Objekts "wort", enthaelt character-string "rot"
-# alt + "-" shortcut für Zuweisungspfeil
+# alt + "-" (Windows) oder option + "-" (Mac) shortcut für Zuweisungspfeil
 rechnung <- 1 + 3 + 4
 rechnung # aufrufen des Objekts "rechnung"
 
@@ -86,13 +88,11 @@ characters + more_characters
 sentences <- c(characters, more_characters) # Die Logik von 'c()' bleibt gleich!
 
 
-
 # Aufspüren von Objekten in Vektoren --------------------------------------
 
 more_characters[1] # Gibt erstes Element des Vektors
 
 weird_something_2[3] # Gibt drittes Element des Vektors
-
 
 
 # Cool und nervig - Listen ----------------------------------------------------
@@ -109,6 +109,7 @@ my_number_list[1]
 my_number_list[1][3] # geht nicht
 my_number_list[[1]]
 my_number_list[[1]][3] # geht
+
 
 # ------------------------------------------------------------------------------
 
