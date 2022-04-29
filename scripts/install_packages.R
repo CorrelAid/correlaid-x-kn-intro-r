@@ -4,7 +4,7 @@
 suppressWarnings(if (!require("pacman")) install.packages("pacman"))
 
 # load packages and install if not installed --------------------------------------------
-pacman::p_load(ggplot2, broom, readr,
+pacman::p_load(tidyverse, broom, readr, here
                install = TRUE,
                update = FALSE)
 

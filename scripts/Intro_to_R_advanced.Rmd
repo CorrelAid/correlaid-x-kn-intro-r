@@ -138,7 +138,6 @@ NorthKorea_Parliament_2019 <- Vanhanen(99.99, 100)
 
 ```
 
-Übung: (Muss definitiv nochmal gegengecheckt/überarbeitet werden)
 
 Jetzt seid ihr gefragt: 
 
@@ -170,7 +169,7 @@ ______(_,_,_,_,_)
 ```
 
 
-Definierie nun einen Vektor mit 5 Werten deiner Wahl:
+Definiere nun einen Vektor mit 5 Werten deiner Wahl:
 ```{r}
 vektor1 <- c(_,_,_,_,_)
 ```
@@ -221,59 +220,118 @@ ________(_______,______)
 
 ```
 
-
 # Packages
-Der Kern von R wird auch base genannt und umfasst die wichtigstens Grundfunktionen — mit denen kommen wir auch schon relativ weit, wir können zum Beispiel problemlos diverse Statistiken berechnen und sogar Visualisierungen machen, aber wir wollen natürlich mehr, einfacher, schneller und besser. Dazu benutzen wir die sogenannten packages. Um diese erstmals zu installieren benutzen wir die install.packages() function.
-
-```{r}
-install.packages("palmerpenguins")
-```
-
-Packages müssen nur einmalig installiert werden, aber je nach Bedarf für jede Sitzung neu geladen werden. Dafür nutzen wir die library() function.
+Der Kern von R wird auch base genannt und umfasst die wichtigstens Grundfunktionen — mit denen kommen wir auch schon relativ weit, wir können zum Beispiel problemlos diverse Statistiken berechnen und sogar Visualisierungen machen, aber wir wollen natürlich mehr, einfacher, schneller und besser. Dazu benutzen wir die sogenannten packages. Um diese erstmals zu installieren benutzen wir die install.packages() function. Das solltet ihr allerdings schon am Ende der Session am Dienstag erledigt haben.
+Packages müssen nur einmalig installiert werden, aber je nach Bedarf für jede Sitzung neu geladen werden. Dafür nutzen wir die library() function. Um etwa CSV-Datensätze (Comma-separated values) zu importieren, nutzen wir die read_delim function aus dem "readr" package in Verbindung mit der here function aus dem "here" package.
 
 ```{r warning=FALSE}
-library(palmerpenguins)
+library(readr)
+library(here)
+```
+
+```{r}
+penguin_data <- read_delim(here::here("scripts/penguin_data.csv"), delim = ";")
 ```
 
 # Den Datensatz untersuchen
 ```{r}
-head(penguins)
+head(penguin_data)
 ```
 
 ```{r}
-str(penguins)
+str(penguin_data)
 ```
 
 ```{r}
-View(penguins)
+View(penguin_data)
 ```
 
 # Lineare Regression
-Eine weit verbreitete Methode um Zusammenhänge in unseren Daten zu verstehen ist die lineare Regression. Dabei untersuchen wir den Einfluss von einer oder mehreren (unabhängigen) Variable(n) auf die zu untersuchende (abhängige Variable). Um eine einfache Regression zu rechnen benötigen wir kein zusätzliches Pckage. Der R Syntax sieht so aus: 
+Eine weit verbreitete Methode um Zusammenhänge in unseren Daten zu verstehen ist die lineare Regression. Dabei untersuchen wir den Einfluss von einer oder mehreren (unabhängigen) Variable(n) auf die zu untersuchende (abhängige Variable). Um eine einfache Regression zu rechnen benötigen wir kein zusätzliches Package. Der R Syntax sieht so aus: 
 
 ```{r}
-lm(body_mass_g ~ flipper_length_mm, data = penguins)
+lm(body_mass_g ~ flipper_length_mm, data = penguin_data)
 ```
 
 Wie lassen sich unsere Ergebnisse interpretieren?
 
 Um noch mehr Informationen über unsere Regression zu erhalten, empfiehlt sich die summary() function. Kommt euch der Output bekannt vor?
 ```{r}
-summary(lm(body_mass_g ~ flipper_length_mm, data = penguins))
+summary(lm(body_mass_g ~ flipper_length_mm, data = penguin_data))
 ```
 
 Falls wir die Ergebnisse jedoch schön abspeichern wollen, sollten wir ein weiteres package verwenden. Das "broom" package:
 
 ```{r}
-install.packages("broom")
 library(broom)
 ```
 
 ```{r}
-broom::tidy(lm(body_mass_g ~ flipper_length_mm, data = penguins))
+broom::tidy(lm(body_mass_g ~ flipper_length_mm, data = penguin_data))
 ```
 
 Jetzt seid wieder ihr gefragt!
+
+Untersuche den Einfluss der Schnabellänge auf das Gewicht eines Pinguins:
+```{r}
+
+```
+
+Verwende die summary() function auf dein Modell um herauszufinden, ob der Einfluss signifikant auf dem 5%-Level ist:
+```{r}
+
+```
+
+Untersuche den Einfluss der Schnabellänge auf das Gewicht eines Pinguins unter Berücksichtigung des Geschlechts des Penguins als Kontrollvariable (einfach per + an erste unabhängige Variable anfügen):
+```{r}
+
+```
+
+Ist dieser Einfluss signifikant auf dem 5%-Level?:
+```{r}
+
+```
+
+Untersuche den Einfluss der Flügellänge auf die Schnabellänge eines Pinguins:
+```{r}
+
+```
+
+Signifikant?
+```{r}
+
+```
+
+
+# Ausblick
+
+R kann auch dazu verwendet werden, Zusammenhänge - ob linear oder auch nicht - auf unterschiedlichste Art und Weise zu visualisieren. Das klassische package dafür ist das "ggplot2" package aus dem tidyverse. Als kleinen teaser für weitere Workshops von uns führt doch einfach mal den nachfolgenden Code aus.
+
+```{r}
+library(ggplot2)
+```
+
+```{r warning=FALSE}
+ggplot(penguin_data, aes(x = flipper_length_mm,
+                     y = body_mass_g)) +
+  geom_point(aes(color = sex)) +
+  scale_color_manual(values = c("darkorange","cyan4"), 
+                     na.translate = FALSE) +
+  facet_wrap(~species)
+```
+```{r warning=FALSE}
+ggplot(data = penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point(aes(color = species, 
+                 shape = species),
+             size = 2) +
+  scale_color_manual(values = c("darkorange","darkorchid","cyan4"))
+```
+
+
+
+
+
+
 
 
 
