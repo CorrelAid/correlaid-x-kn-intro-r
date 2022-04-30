@@ -123,8 +123,8 @@ Leider ist die Funktion für den Vanhanen-Index in R nicht vorinstalliert. Daher
 
 ```{r}
 # P steht hierbei für die Wahlbeteiligung und L für das prozentuale Ergebnis der erfolgreichsten Partei (der "Largest Party"): 
-Vanhanen <- function(P,L){
-  (P*(100-L))/100
+Vanhanen <- function(p,l){
+  (p*(100-l))/100
 }
 ```
 
@@ -136,12 +136,27 @@ France_Presidential_2017 <- Vanhanen(77.8, 24)
 Russia_Parliament_2018 <- Vanhanen(51.7, 49.8)
 NorthKorea_Parliament_2019 <- Vanhanen(99.99, 100)
 
+Germany_2018
+France_Presidential_2017
+Russia_Parliament_2018
+NorthKorea_Parliament_2019
+
 ```
 
+Wie gestern gelernt, können wir aber auch ein Datenset für die Länder erstellen, das Wahlbeteiligung und Anteil der größten Partei zusammenfasst und dann darauf die Funktion anwenden.
+
+```{r}
+
+p<-c(76.6, 77.8, 51.7, 99.99)
+l<- c(26, 24, 49.8, 100)
+vanhanen_df<-data.frame(p,l, row.names = c("Deutschland", "France","Russia","North Korea"))
+
+apply(vanhanen_df, 1, Vanhanen)
+```
 
 Jetzt seid ihr gefragt: 
 
-Programmiert eine Funktion, die 5 Werte addiert:
+1. Programmiert eine Funktion, die 5 Werte addiert:
 ```{r}
 ______ <- function(a,b,c,d,e,f){
   
@@ -155,7 +170,7 @@ _______(_,_,_,_,_)
 
 ```
 
-Nutzt die vorherige Funktion, um eine neue Funktion zu programmieren, die den Durchschnitt der 5 Werte herausgibt
+2. Nutzt die vorherige Funktion, um eine neue Funktion zu programmieren, die den Durchschnitt der 5 Werte herausgibt
 ```{r}
 ____ <- function(a,b,c,d,e,f){
  
@@ -169,12 +184,12 @@ ______(_,_,_,_,_)
 ```
 
 
-Definiere nun einen Vektor mit 5 Werten deiner Wahl:
+3. Definiere nun einen Vektor mit 5 Werten deiner Wahl:
 ```{r}
 vektor1 <- c(_,_,_,_,_)
 ```
 
-Programmiere nun eine Funktion, die die Varianz des soeben definierten Vektors berrechnet:
+4. Programmiere nun eine Funktion, die die Varianz des soeben definierten Vektors berrechnet:
 ```{r}
 _______ <- function (a){
   sum((_-mean(_))^2)/5
@@ -184,12 +199,12 @@ _______ <- function (a){
 _______(_______)
 ```
 
-Definiere nun einen zweiten Vektor mit 5 Werten deiner Wahl:
+5. Definiere nun einen zweiten Vektor mit 5 Werten deiner Wahl:
 ```{r}
 vektor2 <- c(_,_,_,_,_)
 ```
 
-Programmiere nun eine Funktion, um die Kovarianz von Vektor1 und Vektor2 zu errechnen:
+6. Programmiere nun eine Funktion, um die Kovarianz von Vektor1 und Vektor2 zu errechnen:
 ```{r}
 _______ <-function(a,b){
   sum((_-mean(_)*(_-mean(_))))/5
@@ -197,7 +212,7 @@ _______ <-function(a,b){
 # Test:
 _________(______,_______)
 ```
-Abschließend willst du aber auch die Korrelation deiner Vektoren wissen, programmiere auch hierfür eine Funktion:
+7. Abschließend willst du aber auch die Korrelation deiner Vektoren wissen, programmiere auch hierfür eine Funktion:
 ```{r}
 _________ <-function(a,b){
   (________*5)/(sqrt((sum((_-mean(_))^2))/5)*sqrt((sum((_-mean(_))^2))/5))
@@ -206,7 +221,7 @@ _________ <-function(a,b){
 ________(______,______)
 ```
 
-Bonus:
+(8.Bonus):
 Welche Kovarianz, bzw. Korrelation besteht zwischen folgenden Variablen?
 ```{r}
 Methoden<-c(1.3, 2, 3.3, 1.7, 4.0)
