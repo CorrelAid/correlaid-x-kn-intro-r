@@ -4,13 +4,14 @@
 ##
 ## Purpose of script: Script to show basic usage of R
 ##
-## Author: Philipp Bosch & Jens Wiederspohn & Jonas Schrade & Niklas Bacher
+## Author: Philipp Bosch, Jens Wiederspohn, Jonas Schrade, Niklas Bacher
 ##
 ## Date Created: 03-19-2022
 ##
 ## Email: konstanz@correlaid.de
 ##
 ## ---------------------------
+
 
 
 # Die simpelste Version von R - Ein Taschenrechner ------------------------
@@ -20,6 +21,7 @@
 3 ^ 2 # potenzieren
 5 / 3 # dividieren
 5 * (10 - 3) # R hält sich an die gängigen Rechenregeln
+
 
 
 # Etwas fortgeschrittener - R als Orakel -----------------------------------
@@ -32,6 +34,7 @@
 5 != 3 # ungleich
 
 
+
 # Mehr als Zahlen und einfache Abfragen -----------------------------------
 
 32 > 19 & 12 == 6 * 2 # und GLEICHZEITIG
@@ -39,6 +42,7 @@
 '4' == 3
 'rot' == 'blau'
 'sieben' == 7
+
 
 
 # Welche Grundtypen gibt es? ----------------------------------------------
@@ -49,7 +53,8 @@
 TRUE # boolean
 
 
-# R hat ein Gedächtnis - Zuweisungen/Assignment Operator --------------------
+
+# R hat ein Gedächtnis - Zuweisungen/Assignment Operator -------------------
 
 wort <- 'rot'
 wort # aufrufen des Objekts "wort", enthaelt character-string "rot"
@@ -58,7 +63,8 @@ rechnung <- 1 + 3 + 4
 rechnung # aufrufen des Objekts "rechnung"
 
 
-# Vektoren - mehrere Werte in einem Objekt speichern -----------------------------------------
+
+# Vektoren - mehrere Werte in einem Objekt speichern -----------------------
 
 integers <- c(2, 5, 9, 2, 500, 7)
 numerics <- c(4.2, 3.0, 8.5)
@@ -68,18 +74,20 @@ logicals <- c(TRUE, TRUE, FALSE, FALSE)
 # Beachte: Nur gleiche Datentypen innerhalb eines Vektors!
 
 
-# Was passiert wenn wir die Typen mischen? --------------------------------
+
+# Was passiert, wenn wir die Typen mischen? --------------------------------
 
 weird_something <- c('There', 'is', 'no', 'free', 'lunch!', TRUE, TRUE, FALSE, FALSE)
 
 weird_something_2 <- c(2, 5, 9, 2, 500, 7, 'There', 'is', 'no', 'free', 'lunch!', TRUE, TRUE, FALSE, FALSE)
 
 
+
 # Operationen mit Vektoren -------------------------------------------------
 
 large_numbers <- integers + numerics # Addition und Recycling!
 
-characters + logicals # Magische Fehlermeldung
+characters + logicals # Fehlermeldung
 
 more_characters <- c("But", "i", "want", "kostenlosen", "Nachschlag!", "#Seezeitmafia")
 
@@ -88,14 +96,16 @@ characters + more_characters
 sentences <- c(characters, more_characters) # Die Logik von 'c()' bleibt gleich!
 
 
-# Aufspüren von Objekten in Vektoren --------------------------------------
+
+# Aufspüren von Objekten in Vektoren ---------------------------------------
 
 more_characters[1] # Gibt erstes Element des Vektors
 
 weird_something_2[3] # Gibt drittes Element des Vektors
 
 
-# One Step further - Listen ----------------------------------------------------
+
+# One Step further - Listen ------------------------------------------------
 
 # Listen erlauben uns nun das Mischen von Datentypen
 
@@ -111,30 +121,31 @@ my_number_list[[1]]
 my_number_list[[1]][3] # geht
 
 
-# ------------------------------------------------------------------------------
 
-# Erstelle eine Liste, die die folgenden Elemente enthält
+# Aufgabe ------------------------------------------------------------------
+
+# Erstelle eine Liste, die die folgenden Elemente enthält:
 # Einen Integer-Vektor mit den Zahlen 0 bis 10
 # Einen Numeric Vektor mit deinem Alter, deiner Größe (in m) und der Anzahl deiner Persönlichkeiten
 # Einen Charakter-Vektor mit den Worten "Correlaid" "ist" "daaaamn" "cool!"
 
-listy_list <- list(c(XXX:XXX), XXX, c("Correlaid", XXX))
+listy_list <- list(c(___:___), ___, c("Correlaid", ___, ___, ___))
 
 # Indiziere (wähle aus) deine Größe und gib sie in cm an
 
-listy_list[XXX] * XXX
+listy_list[___] * ___
 
 # Berechne, wieviel du pro Lebensjahr gewachsen bist
 
-XXX
+___
 
 # Lass R sagen, dass Correlaid daaaamn cool ist! (Gib den Charakter-Vektor aus)
 
-listy_list[XXX]
+listy_list[___]
 
 
 
-# Dataframes - The powerhouse of R ----------------------------------------
+# Dataframes - The powerhouse of R -----------------------------------------
 
 # Listen und Vektoren sind ja ganz nett. Die meisten von euch werden jedoch 
 # fast immer einen Datensatz benötigen. Wenn ihr jedoch das Prinzip von Listen
@@ -193,7 +204,7 @@ mean(df$schmiede_beers)
 
 
 
-# Letzte Aufgabe: Do it yourself! -----------------------------------------
+# Letzte Aufgabe: Do it yourself! ------------------------------------------
 
 # Nun seid ihr wieder dran! Baut einen Datensatz bestehend aus 4 Variablen. 
 # Variable 1: Die Namen von bis zu 10 eurer Freunde
