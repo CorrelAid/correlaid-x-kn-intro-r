@@ -95,15 +95,15 @@ more_characters[1] # Gibt erstes Element des Vektors
 weird_something_2[3] # Gibt drittes Element des Vektors
 
 
-# Cool und nervig - Listen ----------------------------------------------------
+# One Step further - Listen ----------------------------------------------------
 
-# Listen sind cool
+# Listen erlauben uns nun das Mischen von Datentypen
 
 my_list <- list("This", "is", "a", "list", 5, 7, TRUE) # mischen von Typen möglich
 
 my_number_list <- list(integers, numerics) # zusammenführen von Vektoren möglich
 
-# Aber das finden von Elementen ist etwas nervig
+# Wie finde ich nun Elemente in Listen?
 
 my_number_list[1]
 my_number_list[1][3] # geht nicht
@@ -116,7 +116,7 @@ my_number_list[[1]][3] # geht
 # Erstelle eine Liste, die die folgenden Elemente enthält
 # Einen Integer-Vektor mit den Zahlen 0 bis 10
 # Einen Numeric Vektor mit deinem Alter, deiner Größe (in m) und der Anzahl deiner Persönlichkeiten
-# Einen Charakter-Vektor mit den Worten "Correlaid" "ist" "sau" "cool!"
+# Einen Charakter-Vektor mit den Worten "Correlaid" "ist" "daaaamn" "cool!"
 
 listy_list <- list(c(XXX:XXX), XXX, c("Correlaid", XXX))
 
@@ -128,120 +128,81 @@ listy_list[XXX] * XXX
 
 XXX
 
-# Lass R sagen, dass Correlaid sau cool ist! (Gib den Charakter-Vektor aus)
+# Lass R sagen, dass Correlaid daaaamn cool ist! (Gib den Charakter-Vektor aus)
 
 listy_list[XXX]
 
-# Für Experten: füge der Liste deine Vor- und Nachnamen an
-
-listy_list[XXX] <- c("Marie", "Johanna", "Dübel")
 
 
-# The real shit - Funktionen ----------------------------------------------
+# Dataframes - The powerhouse of R ----------------------------------------
 
-mean(integers) # berechne den mean der Werte des Objekts integers
-median(integers)
-sum(integers) # summiere alle Elemente aus integers
-wurzel <- sqrt(35) # berechne die Wurzel von 35
+# Listen und Vektoren sind ja ganz nett. Die meisten von euch werden jedoch 
+# fast immer einen Datensatz benötigen. Wenn ihr jedoch das Prinzip von Listen
+# verstanden habt, könnt ihr das ganz einfach auf Datensätze übertragen.
 
-length(integers) # gib die Länge des vectors zurück (die Anzahl der Elemente)
+# Prinzipiell sind Dataframes nämlich nichts anderes wie eine besondere Art einer Liste
 
+# Lasst uns das nachvollziehen indem wir einen Dataframe from scratch aufbauen
 
-vector1 <- c(1:10)
-vector2 <- c(1:10)
-cor(vector1, vector2) # berechne die correlation zweier vektoren
-
-# es geht schwieriger
-vector1 <- c(12,42,132,5312,43,212,23,32,123)
-vector2 <- c(46,123,365,213,59,3421,73,134,7)
-cor(vector1, vector2)
-
-round(wurzel, digits = 1)
-# es sind auch Verschachtelungen von Funktionen möglich:
-round(sqrt(35), digits = 1) # ist das selbe wie 2 Zeilen weiter oben
-
-wuerfel <- c(1:6)
-sample(wuerfel) #  ändert die Reihenfolge der Elemente im Würfel
-# erst durch Zuweisung wird das Ergebnis gespeichert
-sample_x <- sample(wuerfel)
-sample_x
-
-# wenn wir nur eine zufällige Zahl aus unserem Würfel haben wollen können wir 
-# den Parameter size mit dem Wert 1 hinzufügen
-sample(wuerfel, size = 1)
-
-# Und welche Parameter gibt es für weöche Funktion?
-?sample # gibt die Dokumentation der Funktion im help-screen aus
+var_1 <- c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10) # ziemlich viel zu tippen, oder?
+var_2 <- c(11:20)
+var_3 <- c("Phil", "Jens")
 
 
-# Eigene Funktionen - Wie & Warum --------------------------------------------
+df <- data.frame(var_1, var_2, var_3) # warum funktioniert das nicht?
 
-# Eigene Funktionen sind sinnvoll für für spezielle Probleme und repetitive Aufgaben
-# Wir können unsere eigene simple Additionsfunktion definieren:
+var_3 <- c("Phil", "Jens", "Jonas", "Niklas", "Mensatester",
+          "Zoe", "Frie", "Susumu", "Peter", "Schuhmi")
 
-add <- function(a,b) {  # das hier ist der Kopf der Funktion, "add" ist der name, mit dem wir die fkt. später aufrufen können
-                        # in den klammern von function() können wir parameter bestimmen, für die addition brauchen wir 2, 
-                        # die können wir nennen wie wir wollen
-  return(a+b)           # alles zwischen den Klammern wird der Rumpf genannt,
-                        # mit dem return() geben wir das ergbenis der berechnung zurück um es später wiederverwenden zu können
-}
-
-# jetzt können wir die Funktion aufrufen (benutzen)
-add(1,2)
-add(13, 8)
-add(200, -10)
-add(-200, -10)
-add(-200, 10)
-add("hey ", 2) # das wird einen Fehler werfen
-add("hey ", "du") # das hier auch
+df <- data.frame(var_1, var_2, var_3)
 
 
-# Eigene Funktionen - advanced 1 -----------------------------------------------
+# Der Zugriff auf einzelne Variablen und Werte erfolgt nun analog zu Listen
 
-# Vanhanen Index
-vanhanen <- function(vote_share, participation, population) {
-  absolute_voters <- participation * population
-  P <- absolute_voters/population * 100
-  C <- 100 - vote_share
-  final_index <- (C * P)/100
-  return(final_index)
-}
+# erste Spalte (Variable)
+df[,1]
 
-# Jetzt können wir einfach den Index berechnen ohne immer alles zu tippen, es reicht:
-vanhanen(32.9, 0.76, 83.6)
-vanhanen(53.08, 0.51, 10.01)
+# erste Reihe 
+df[1,]
 
-# --------------------------------------------------------------------------
+# Wert in der Zelle erste Reihe erste Spalte
+df[1,1]
+
+# Wert in der Zelle dritte Spalte erste Reihe
+df[1,3]
 
 
-# Schreibe eine Funktion, die das letzte Element eines Vektors zurückgibt
+# Zusätzlich lassen sich Variablen in dataframes auch über den '$'-Operator indizieren
 
-last <- function(XXX) {
-  return(XXX)
-}
+df$var_1
 
-toy_vector <- c(1:10, "a","b")
-toy_vector2<- c(1:20)
+# Um sinnvoll mit einem dataframe arbeite zu können, sollten wir etwas sprechendere
+# Namen für unsere Variablen verwenden
 
-last <- function(vector){
-  return(toy_vector[length(toy_vector)])
-}
+names(df)
 
-last(toy_vector)
-# Schreibe eine Funktion, die alle Elemente eines Vektors, die kleiner als der
-# Durchschnitt sind, zurückgibt
+# Wir sehen, die Namen sind in einem Vektor gespeichert. Vektoren kennen wir. Was
+# wir kennen, können wir auch verändern!
 
-unterdurchschnittlich <- function(XXX) {
-  kleiner <- XXX < XXX
-  return(XXX[kleiner])
-}
+names(df) <- c("stats_points", "schmiede_beers", "name")
 
-toy_vector2[toy_vector2 < mean(toy_vector2)]
+# Kleiner Ausblick auf morgen: Funktionen auf Variablen!
+# Wir wollen den Durchschnitt der getrunkenen Beers in der Schmiede wissen
+
+mean(df$schmiede_beers)
 
 
-# Für Experten: Fangt mit den Hausaufgaben an
+
+# Letzte Aufgabe: Do it yourself! -----------------------------------------
+
+# Nun seid ihr wieder dran! Baut einen Datensatz bestehend aus 4 Variablen. 
+# Variable 1: Die Namen von bis zu 10 eurer Freunde
+# Variable 2: Wohnort der jeweilige Person (kann auch random sein)
+# Variable 3: € welche diese Person letztes Wochenende ausgegeben hat
+# Variable 4: Eine boolesche/dummy Variable welche angibt ob diese Person das Berrys mag
+
 
 
 # Für morgen noch diese Zeile ausführen! Könnte etwas dauern, da ihr Packages installiert
 
-source(file = "install_packages.R") # source spielt einfach das komplette Skript ab
+source(file = "scripts/install_packages.R") # source spielt einfach das komplette Skript ab

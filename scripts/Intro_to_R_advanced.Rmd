@@ -245,7 +245,7 @@ library(here)
 ```
 
 ```{r}
-penguin_data <- read_delim(here::here("scripts/penguin_data.csv"), delim = ";")
+penguin_data <- read_delim(here::here("data/penguin_data.csv"), delim = ";")
 ```
 
 # Den Datensatz untersuchen
