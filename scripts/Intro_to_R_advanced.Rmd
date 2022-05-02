@@ -149,7 +149,7 @@ Wie gestern gelernt, können wir aber auch ein Datenset für die Länder erstell
 
 p<-c(76.6, 77.8, 51.7, 99.99)
 l<- c(26, 24, 49.8, 100)
-vanhanen_df<-data.frame(p,l, row.names = c("Deutschland", "France","Russia","North Korea"))
+vanhanen_df<-data.frame(p,l, row.names = c("Germany", "France","Russia","North Korea"))
 
 apply(vanhanen_df, 1, Vanhanen)
 ```
@@ -199,29 +199,7 @@ _______ <- function (a){
 _______(_______)
 ```
 
-5. Definiere nun einen zweiten Vektor mit 5 Werten deiner Wahl:
-```{r}
-vektor2 <- c(_,_,_,_,_)
-```
-
-6. Programmiere nun eine Funktion, um die Kovarianz von Vektor1 und Vektor2 zu errechnen:
-```{r}
-_______ <-function(a,b){
-  sum((_-mean(_)*(_-mean(_))))/5
-}
-# Test:
-_________(______,_______)
-```
-7. Abschließend willst du aber auch die Korrelation deiner Vektoren wissen, programmiere auch hierfür eine Funktion:
-```{r}
-_________ <-function(a,b){
-  (________*5)/(sqrt((sum((_-mean(_))^2))/5)*sqrt((sum((_-mean(_))^2))/5))
-}
-
-________(______,______)
-```
-
-(8.Bonus):
+(5.Bonus):
 Welche Kovarianz, bzw. Korrelation besteht zwischen folgenden Variablen?
 ```{r}
 Methoden<-c(1.3, 2, 3.3, 1.7, 4.0)
