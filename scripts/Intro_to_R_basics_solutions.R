@@ -212,7 +212,13 @@ mean(df$schmiede_beers)
 # Variable 3: € welche diese Person letztes Wochenende ausgegeben hat
 # Variable 4: Eine boolesche/dummy Variable welche angibt ob diese Person das Berrys mag
 
+Name <- c("Peter", "Steffen", "Bernhardt", "Natascha", "Thorsten", "Peter", "Nikolas", "Jutta", "Alfons", "Sylvia") #
+Home <- c("Petershausen", "Allmannsdorf", "Egg", "Altstadt", "Paradies", "Litzelstetten", "Dingelsdorf", "Ulm", "Ulm", "Dingelsdorf")
+Spendings <- c(34, 22, 55, 12, 26, 42, 21, 76, 80, 31)
+likes_Berrys <- c(TRUE, FALSE, FALSE, TRUE, FALSE, TRUE, TRUE, TRUE, TRUE, FALSE)
 
+data<-data.frame(Name, Home, Spendings, likes_Berrys)
+data
 
 # Für morgen noch diese Zeile ausführen! Könnte etwas dauern, da ihr Packages installiert
 
