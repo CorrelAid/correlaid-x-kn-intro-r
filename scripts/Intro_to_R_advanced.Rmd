@@ -320,7 +320,7 @@ ggplot(penguin_data, aes(x = flipper_length_mm,
   facet_wrap(~species)
 ```
 ```{r warning=FALSE}
-ggplot(data = penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
+ggplot(data = penguin_data, aes(x = flipper_length_mm, y = body_mass_g)) +
   geom_point(aes(color = species, 
                  shape = species),
              size = 2) +
