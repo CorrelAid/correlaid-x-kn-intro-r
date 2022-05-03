@@ -157,7 +157,7 @@ listy_list[___]
 
 var_1 <- c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10) # ziemlich viel zu tippen, oder?
 var_2 <- c(11:20)
-var_3 <- c("Phil", "Jens")
+var_3 <- c("Phil", "Jens", "Jonas", "Niklas")
 
 
 df <- data.frame(var_1, var_2, var_3) # warum funktioniert das nicht?
