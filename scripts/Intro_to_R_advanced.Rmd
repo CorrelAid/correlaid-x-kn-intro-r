@@ -57,7 +57,7 @@ median(Age)
 length(Height)
 
 # In diesem Zuge können wir auch gleich prüfen, ob unsere Vektoren gleichlang sind, also ob die Variable der Körpergröße gleichviel Beobachtungen hat, wie die Variable des Alters.
-length(Height)==length(Age)
+length(Height) == length(Age)
 
 
 # Wir können uns nun auch die Varianz der Variablen Height und Age ausrechnen lassen:
@@ -82,11 +82,11 @@ Mit der Sample-Funktion können wir Stichproben ziehen:
 
 ```{r}
 # Zunächst definieren wir eine Population, diese besteht aus allen Werten zwischen 1 und 10 000.
-Population<-c(1:10000) 
+Population <- c(1:10000) 
 
 # Aus diese Population ziehen wir jetzt eine zufällige Stichprobe von der Größe 10:
-sample1 <- sample(Population, size=10)
-sample2 <- sample(Population, size=10)
+sample1 <- sample(Population, size = 10)
+sample2 <- sample(Population, size = 10)
 
 # Ihr seht, dass, trotz identischer Funktion, sample1 und sample2 völlig unterschiedlich sind. Das liegt daran, dass die sample-Funktion jedes Mal aufs Neue zufällige Stichproben zieht.
 
@@ -106,9 +106,9 @@ Ihr seht, dass es in R Funktionen für so ziemlich alles gibt. Und wenn es für 
 
 ```{r}
 # Wir programmieren eine Funktion, die die gleiche Aufgabe übernimmt wie die sum-Funktion: Sie addiert die Werte a und b.
-addieren <- function (a,b){
+addieren <- function(a,b){
  
-   a+b
+   a + b
 
   }
 
@@ -124,7 +124,7 @@ Leider ist die Funktion für den Vanhanen-Index in R nicht vorinstalliert. Daher
 ```{r}
 # P steht hierbei für die Wahlbeteiligung und L für das prozentuale Ergebnis der erfolgreichsten Partei (der "Largest Party"): 
 Vanhanen <- function(p,l){
-  (p*(100-l))/100
+  (p*(100 - l))/100
 }
 ```
 
@@ -136,23 +136,13 @@ France_Presidential_2017 <- Vanhanen(77.8, 24)
 Russia_Parliament_2018 <- Vanhanen(51.7, 49.8)
 NorthKorea_Parliament_2019 <- Vanhanen(99.99, 100)
 
-Germany_2018
+Germany_Bundestag_2018
 France_Presidential_2017
 Russia_Parliament_2018
 NorthKorea_Parliament_2019
 
 ```
 
-Wie gestern gelernt, können wir aber auch ein Datenset für die Länder erstellen, das Wahlbeteiligung und Anteil der größten Partei zusammenfasst und dann darauf die Funktion anwenden.
-
-```{r}
-
-p<-c(76.6, 77.8, 51.7, 99.99)
-l<- c(26, 24, 49.8, 100)
-vanhanen_df<-data.frame(p,l, row.names = c("Germany", "France","Russia","North Korea"))
-
-apply(vanhanen_df, 1, Vanhanen)
-```
 
 Jetzt seid ihr gefragt: 
 
@@ -189,7 +179,7 @@ ______(_,_,_,_,_)
 vektor1 <- c(_,_,_,_,_)
 ```
 
-4. Programmiere nun eine Funktion, die die Varianz des soeben definierten Vektors berrechnet:
+4. Programmiere nun eine Funktion, die die Varianz des soeben definierten Vektors berechnet:
 ```{r}
 _______ <- function (a){
   sum((_-mean(_))^2)/5
@@ -220,10 +210,11 @@ Packages müssen nur einmalig installiert werden, aber je nach Bedarf für jede 
 ```{r warning=FALSE}
 library(readr)
 library(here)
+library(dplyr)
 ```
 
 ```{r}
-penguin_data <- read_delim(here::here("data/penguin_data.csv"), delim = ";")
+penguin_data <- readr::read_delim(here::here("data/penguin_data.csv"), delim = ";")
 ```
 
 # Den Datensatz untersuchen
@@ -238,6 +229,25 @@ str(penguin_data)
 ```{r}
 View(penguin_data)
 ```
+
+
+```{r}
+dplyr::glimpse(penguin_data)
+```
+Und hier sehen wir zum ersten Mal, dass die Arbeit mit echten Daten manchmal unvorhergesehene Überraschungen parat hält! Stichwort Missing Data (NA)
+```{r}
+mean(penguin_data$body_mass_g)
+```
+
+Der Mittelwert von einer Variablen mit (teilweise) fehlenden Werten kann nicht 
+berechnet werden. Wir müssen R explizit mitteilen, dass wir fehlende Werte ausschließen
+möchten.
+
+```{r}
+mean(penguin_data$body_mass_g, na.rm = TRUE)
+```
+
+
 
 # Lineare Regression
 Eine weit verbreitete Methode um Zusammenhänge in unseren Daten zu verstehen ist die lineare Regression. Dabei untersuchen wir den Einfluss von einer oder mehreren (unabhängigen) Variable(n) auf die zu untersuchende (abhängige Variable). Um eine einfache Regression zu rechnen benötigen wir kein zusätzliches Package. Der R Syntax sieht so aus: 
@@ -310,14 +320,16 @@ ggplot(penguin_data, aes(x = flipper_length_mm,
   geom_point(aes(color = sex)) +
   scale_color_manual(values = c("darkorange","cyan4"), 
                      na.translate = FALSE) +
-  facet_wrap(~species)
+  facet_wrap(~species) +
+  theme_minimal()
 ```
 ```{r warning=FALSE}
 ggplot(data = penguin_data, aes(x = flipper_length_mm, y = body_mass_g)) +
   geom_point(aes(color = species, 
                  shape = species),
              size = 2) +
-  scale_color_manual(values = c("darkorange","darkorchid","cyan4"))
+  scale_color_manual(values = c("darkorange","darkorchid","cyan4")) +
+  theme_minimal()
 ```
 
 
