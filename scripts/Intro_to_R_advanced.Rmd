@@ -148,7 +148,7 @@ Jetzt seid ihr gefragt:
 
 1. Programmiert eine Funktion, die 5 Werte addiert:
 ```{r}
-______ <- function(a,b,c,d,e,f){
+______ <- function(a,b,c,d,e){
   
   __________
 
@@ -162,7 +162,7 @@ _______(_,_,_,_,_)
 
 2. Nutzt die vorherige Funktion, um eine neue Funktion zu programmieren, die den Durchschnitt der 5 Werte herausgibt
 ```{r}
-____ <- function(a,b,c,d,e,f){
+____ <- function(a,b,c,d,e){
  
    _______(_,_,_,_,_)/5
 
